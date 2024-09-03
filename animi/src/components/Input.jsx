@@ -11,8 +11,9 @@ function Input({ onResponseData }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsTyping(true);
-        axios.post('http://localhost:5000/ask', { prompt: data })
-            .then((response) => {
+        // axios.post('http://localhost:5000/ask', { prompt: data })
+        axios.post('https://gemini-qcu9.onrender.com/ask', { prompt: data })
+        .then((response) => {
                 onResponseData({ userMessage: data, botResponse: response.data.result });
             })
             .catch((error) => {
