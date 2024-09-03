@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Chat from "./components/Chat";
 import Input from "./components/Input";
 import Header from "./components/Header";
 
 function App() {
+  const [height, setHeight] = useState(window.innerHeight);
+
+  useEffect(() => {
+    const handleResize = () => setHeight(window.innerHeight);
+
+    // Set initial height
+    handleResize();
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const [chatMessages, setChatMessages] = useState([
     { message: "Hello! How can I help you today?", iconType: "bot" },
   ]);
@@ -25,7 +41,7 @@ function App() {
 
   return (
     <>
-      <div className="h-screen flex flex-col bg-white">
+      <div style={{ minHeight: `${height}px` }} className="flex flex-col bg-white">
         <Header />
         <div className="main flex-1 px-2 py-4 overflow-y-auto">
           <div className="sm:w-full md:w-[90%] lg:w-[60%] m-auto">
