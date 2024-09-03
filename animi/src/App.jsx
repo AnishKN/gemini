@@ -27,8 +27,8 @@ function App() {
     <>
       <div className="h-screen flex flex-col bg-white">
         <Header />
-        <div className="main flex-1 p-8 overflow-y-auto">
-          <div className="w-[60%] m-auto">
+        <div className="main flex-1 px-2 py-4 overflow-y-auto">
+          <div className="sm:w-full md:w-[90%] lg:w-[60%] m-auto">
             {chatMessages.map((chat, index) => (
               <Chat
                 key={index} // Ensure each message has a unique key

@@ -10,8 +10,8 @@ function Chat({ iconType, message }) {
   };
 
   return (
-    <div className="bg-white flex gap-4 items-start p-4 border-b border-gray-50">
-      <div className="icon text-gray-200 p-2 text-sm">
+    <div className="bg-white flex gap-4 items-start p-2 border-b border-gray-50">
+      <div className="icon text-gray-200 p-1 text-sm">
         {iconType === "bot" && <FaInfinity size={24} />}
         {iconType === "user" && <LuUserSquare2 size={24} />}
       </div>
